@@ -6,18 +6,18 @@ function getName(){
     return this;
 }
 
-// global
-getName()
-// function 本身
-new getName()
+// // global
+// getName()
+// // function 本身
+// new getName()
 
 
 
-function Person(){
-    this.getName = getName;
-}
+// function Person(){
+//     this.getName = getName;
+// }
 
-new Person().getName();
+// new Person().getName();
 
 // new的返回，是可以自定义的。
 function Person2(){
@@ -27,4 +27,4 @@ function Person2(){
     }
 }
 
-new Person2().getName();
+console.log(new Person2())

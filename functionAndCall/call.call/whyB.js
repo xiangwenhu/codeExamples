@@ -9,6 +9,19 @@
 **/
 
 
-function name(){
-    console.log(this.name)
+
+function a(){ 
+    console.log(this,'a')
+};
+function b(){
+    console.log(this,'b')
 }
+
+// a.call(b, "b");
+
+// a.call.call(b,'b');  
+// a.call.call.call(b,'b');
+// a.call.call.call.call(b,'b');
+// a.call.call.call.call.call(b,'b');
+
+b.call('b')

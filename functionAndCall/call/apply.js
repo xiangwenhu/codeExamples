@@ -10,25 +10,12 @@ var rate = 1
 const sumHeler = {
     rate: 1,
     sumRate() {
+        console.log(arguments)
         return slice.call(arguments).reduce(function (total, cur) {
             return total + cur
         }, 0) * this.rate
     }
 }
 
-print(sumHeler.sumRate(10, 20))
 
-// 数组
-print(sumHeler.sumRate.apply({
-    rate: 2
-}, [10, 20]))
-
-
-// 类数组, NodeList
-print(sumHeler.sumRate.apply({
-    rate: 2
-}, {
-    length:2,
-    "0": 10,
-    "1": 20
-}))
+print(sumHeler.sumRate.bind({ rate: 0.5 })(10, 20))

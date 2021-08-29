@@ -1,3 +1,4 @@
+
 Function.prototype.call = function (context) {
     context = (context == null || context == undefined) ? window : new  Object(context);
     context.fn = this;
@@ -10,3 +11,5 @@ Function.prototype.call = function (context) {
     return r;
   }
   
+
+

@@ -16,10 +16,10 @@ const sumHeler = {
     }
 }
 
-print(sumHeler.sumRate(10,20))
+// print(sumHeler.sumRate(10,20))
 
 // 其他的项借用,
 
 print(sumHeler.sumRate.call({
     rate: 2
-}, 10,20))
+}, 10,20,30))

@@ -16,12 +16,12 @@ function argTest() {
 argTest();
 
 
-
 // 转换为 数组
 
+var print = console.log;
 // slice,可以尝试splice试试
 function sum() {
-    return slice.call(arguments).reduce(function (total, cur) {
+    return Array.prototype.slice.call(arguments).reduce(function (total, cur) {
         return total + cur
     }, 0)
 }
