@@ -1,8 +1,17 @@
+
+
 const name = "Tom";
 function getName(){
     console.log("this:", this);
     return this;
 }
+
+// global
+getName()
+// function 本身
+new getName()
+
+
 
 function Person(){
     this.getName = getName;

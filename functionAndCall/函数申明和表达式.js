@@ -11,3 +11,9 @@ helloWorld2();
 var helloWorld2 = function () {
     console.log("hello world");  
 }
+
+
+// ES6 暂时性死区
+typeof newLetVariable; // ReferenceError
+
+let newLetVariable;
