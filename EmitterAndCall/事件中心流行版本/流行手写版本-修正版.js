@@ -69,15 +69,13 @@ function event3(...args) {
 }
 
 
-emitter.on("event1", event1);
-emitter.on("event1", event1);
-emitter.once("event1", event1_once);
+// 链式调用
+emitter.on("event1", event1)
+.on("event1", event1)
+.once("event1", event1_once);
 
 emitter.emit("event1", 1);
 // emitter.off("event1", event1);
 
 console.log("再次emit:===")
 emitter.emit("event1", 2);
-
-// console.log("再再次emit:===")
-// emitter.emit("event1", 2);
