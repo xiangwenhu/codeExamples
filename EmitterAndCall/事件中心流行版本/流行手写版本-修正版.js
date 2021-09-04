@@ -5,37 +5,49 @@ class EventEmitter {
         this.events = {};
     }
     // 实现订阅
-    on(type, callBack) {
+    on(type, listener) {
         if (!this.events[type]) {
-            this.events[type] = [callBack];
+            this.events[type] = [listener];
         } else {
-            this.events[type].push(callBack);
+            this.events[type].push(listener);
         }
+        return this;
     }
+
     // 删除订阅
-    off(type, callBack) {
-        if (!this.events[type]) return;
-        this.events[type] = this.events[type].filter(function (item) {
-            return item !== callBack;
+    off(type, listener) {
+        const listeners = this.events[type];
+        if (!listeners) return;
+        const index = listeners.findIndex(function (l) {
+            return l === listener
         });
+        // ~-1 = 0, 只有不存的时候才为false
+        // 存在的时候都是true
+        if (~index) {
+            listeners.splice(index, 1);
+        }
+        return this;
+
     }
     // 只执行一次订阅事件
-    once(type, callBack) {
+    once(type, listener) {
         function fn() {
-            callBack();
+            listener.apply(this, slice.call(arguments));
             this.off(type, fn);
         }
-        this.on(type, fn);
+        return this.on(type, fn);
     }
+    
     // 触发事件
     emit(type) {
         if (!this.events[type]) {
             return
         }
 
-        const listeners = this.events[type];
+        // 复制当前的一个备份
+        const listeners = this.events[type].slice();
         for (let i = 0; i < listeners.length; i++) {
-            listeners[i].apply(this, Array.prototype.slice.call(arguments, 1))
+            listeners[i].apply(this, slice.call(arguments, 1))
         }
     }
 }
@@ -49,7 +61,7 @@ function event1(...args) {
 }
 
 function event1_once(...args) {
-    console.log("noce event1:", ...args);
+    console.log("once event1:", ...args);
 }
 
 function event3(...args) {
