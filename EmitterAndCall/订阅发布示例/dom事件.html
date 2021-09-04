@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #root {
+            margin-top: 100px;
+            width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+
+        div {
+            margin: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div id="root">
+        <button id="btn">点我</button>
+        <div>
+            <button id="btnClickMock1">模拟点击click</button>
+            <button id="btnClickMock2">模拟点击dispatch</button> 
+        </div>
+        <div>
+            <button id="btnRemove">移除点击事件</button>
+            <button id="btnRestore">恢复击事件</button>
+        </div>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+
+        function onBtnClick(ev) {
+            alert("被点击了");
+        }
+
+        btn.addEventListener("click",onBtnClick);
+
+
+        // 方式1 直接调用
+        function mockClick1() {
+            btn.click();
+        }
+
+        // 方式2 
+        function mockClick2() {
+            const me = new MouseEvent("click");
+            btn.dispatchEvent(me);
+        }
+
+        btnClickMock1.addEventListener("click", mockClick1);
+        btnClickMock2.addEventListener("click", mockClick2);
+
+        btnRemove.addEventListener("click", function(){
+            btn.removeEventListener("click", onBtnClick)
+        })
+
+        btnRestore.addEventListener("click",function(){
+            btn.addEventListener("click",onBtnClick);
+        })
+
+
+    </script>
+
+
+</body>
+
+</html>
