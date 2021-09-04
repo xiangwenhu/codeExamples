@@ -1,12 +1,12 @@
 
 
-const name = "Tom";
+// const name = "Tom";
 function getName(){
     console.log("this:", this);
     return this;
 }
 
-// // global
+// // // global
 // getName()
 // // function 本身
 // new getName()
