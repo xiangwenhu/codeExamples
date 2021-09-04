@@ -37,13 +37,13 @@ class EventEmitter {
         }
         return this.on(type, fn);
     }
-    
+
     // 触发事件
     emit(type) {
+
         if (!this.events[type]) {
             return
         }
-
         // 复制当前的一个备份
         const listeners = this.events[type].slice();
         for (let i = 0; i < listeners.length; i++) {
@@ -71,8 +71,8 @@ function event3(...args) {
 
 // 链式调用
 emitter.on("event1", event1)
-.on("event1", event1)
-.once("event1", event1_once);
+    .on("event1", event1)
+    .once("event1", event1_once);
 
 emitter.emit("event1", 1);
 // emitter.off("event1", event1);

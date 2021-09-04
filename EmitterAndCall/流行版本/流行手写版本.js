@@ -46,9 +46,7 @@ const emitter = new EventEmitter();
 
 function event1(...args) {
     console.log("event1:", ...args);
-    // emitter.on("event1", event1);
-
-    // emitter.emit("event1", 2);
+    emitter.on("event1", event1);
 }
 
 function event1_once(...args) {

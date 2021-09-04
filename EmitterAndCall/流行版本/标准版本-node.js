@@ -7,6 +7,7 @@ const emitter = new EventEmitter();
 function event1(...args) {
     console.log("event1:", ...args);
     emitter.on("event1", event1);
+    // emitter.emit("event1", 2);
 }
 
 function event1_once(...args) {
@@ -19,7 +20,7 @@ emitter.on("event1", event1)
 .once("event1", event1_once);
 
 emitter.emit("event1", 1);
-// emitter.off("event1", event1);
+emitter.off("event1", event1);
 
 console.log("再次emit:===")
 emitter.emit("event1", 2);

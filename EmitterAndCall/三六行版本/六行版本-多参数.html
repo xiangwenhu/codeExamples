@@ -14,7 +14,7 @@
     <script>
 
         class EventEmitter extends EventTarget {
-            on = (type, listener) => this.addEventListener(type, e => listener.apply(this, e.detail || []))
+            on = (type, listener, options) => this.addEventListener(type, e => listener.apply(this, e.detail || []), options)
             off = this.removeEventListener;
             emit = (type, ...args) => this.dispatchEvent(new CustomEvent(type, { detail: args }));
             once = (type, listener) => this.on(type, listener, { once: true, capture: true });

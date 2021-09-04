@@ -13,8 +13,7 @@
 
     <script>
         // 小细节
-        window._on = window.addEventListener ;
-        window._off = window.removeEventListener;
+        (window._on = window.addEventListener, window._off = window.removeEventListener);
         window._emit = (type, data) => window.dispatchEvent(new CustomEvent(type, { detail: data }));;
         window._once = (type, listener) => window.addEventListener(type, listener, { once: true, capture: true });
     </script>
